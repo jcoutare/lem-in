@@ -6,7 +6,7 @@
 /*   By: yguzman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 15:34:54 by yguzman           #+#    #+#             */
-/*   Updated: 2017/12/28 16:54:22 by jcoutare         ###   ########.fr       */
+/*   Updated: 2018/01/07 18:37:08 by jcoutare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,13 @@ typedef struct				s_tree
 	int						validroom;
 }							t_tree;
 
-int						ant_ant(t_dm *data_map);
-int						ft_list_size_r(t_room *begin_list);
-int						ft_list_size_t(t_truc *begin_list);
+void						lem_in_print(t_room *room);
+int							lance(t_room *room, t_dm *data_map);
+int							nb_coup_total(t_dm *data_map, int *lol, int *xd);
+void						launch_the_nukes(t_dm *data_map, int *xd, int *lol, int i);
+int							ant_ant(t_dm *data_map);
+int							ft_list_size_r(t_room *begin_list);
+int							ft_list_size_t(t_truc *begin_list);
 void						lst_remove_last(t_room **begin_list);
 t_room						*lemin_new(char *name);
 t_room						*lst_copy(t_room **begin_list);
@@ -74,5 +78,8 @@ int							search_nb_ant_start_end(char **file);
 int							get_path(t_tree *data, t_dm *data_map, char *prev, int i);
 int							find_start(t_tree **data, t_dm *data_map);
 int							ant_ant(t_dm *data_map);
-
+void						set_cancer(t_truc *tmp_c, t_truc *main_c);
+void						set_cancer_2(int smaller, t_truc *tmp_c, t_truc *main_c);
+void						loop_list(t_dm *data_map, t_truc *tmp_c,
+								t_truc *main_c, t_room *main_room);
 #endif

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tools.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcoutare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/07 17:36:50 by jcoutare          #+#    #+#             */
+/*   Updated: 2018/01/07 17:42:43 by jcoutare         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <stdlib.h>
 #include "lemin.h"
@@ -18,7 +30,8 @@ t_tree			*create_maillon(char *name, int what)
 	t_tree		*new;
 
 	if ((new = malloc(sizeof(t_tree))) == NULL)
-		return (NULL); new->name = name;
+		return (NULL);
+	new->name = name;
 	new->next = NULL;
 	new->what = what;
 	new->branch = NULL;

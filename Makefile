@@ -5,7 +5,7 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yguzman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            # #    Created: 2016/07/18 11:38:09 by yguzman           #+#    #+#              #
-#    Updated: 2017/12/28 15:04:48 by jcoutare         ###   ########.fr        #
+#    Updated: 2018/01/07 18:20:09 by jcoutare         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,12 +16,14 @@ NAME		=		./lem-in
 DIR_SRC		=		./src/
 
 SRCS		=		$(DIR_SRC)main.c					\
+					$(DIR_SRC)moove_ant.c					\
 					$(DIR_SRC)read_and_fill.c			\
 					$(DIR_SRC)check_line.c				\
 					$(DIR_SRC)create_cpy_file.c			\
 					$(DIR_SRC)pars_data.c				\
 					$(DIR_SRC)pars_data1.c				\
 					$(DIR_SRC)ant_ant.c					\
+					$(DIR_SRC)ant_ant2.c					\
 					$(DIR_SRC)ft_list_size.c					\
 					$(DIR_SRC)fill_data.c				\
 					$(DIR_SRC)algo.c					\

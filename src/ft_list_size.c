@@ -6,17 +6,17 @@
 /*   By: jcoutare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/23 09:38:50 by jcoutare          #+#    #+#             */
-/*   Updated: 2017/04/26 17:31:21 by jcoutare         ###   ########.fr       */
+/*   Updated: 2018/01/07 17:35:11 by jcoutare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "lemin.h"
 
-int		ft_list_size_t(t_truc *begin_list)
+int				ft_list_size_t(t_truc *begin_list)
 {
-	t_truc	*list;
-	int	i;
+	t_truc		*list;
+	int			i;
 
 	list = begin_list;
 	i = 0;
@@ -30,10 +30,10 @@ int		ft_list_size_t(t_truc *begin_list)
 	return (i);
 }
 
-int		ft_list_size_r(t_room *begin_list)
+int				ft_list_size_r(t_room *begin_list)
 {
-	t_room	*list;
-	int	i;
+	t_room		*list;
+	int			i;
 
 	list = begin_list;
 	i = 0;

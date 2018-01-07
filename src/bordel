@@ -1,0 +1,104 @@
+  /*
+     //  sort(data_map, lol);
+    void   sort(t_dm *data_map, int *tab)
+    {
+    int	i;
+    int	j;
+    int	coup;
+    int	ant_i;
+    int	ant_j;
+
+    i = nbcoup_lower(tab, data_map, -1);
+    ant_i = data_map->nb_ant;
+    while ((j = nbcoup_lower(tab, data_map, i)) != -1)
+    {
+    ant_j = 0;
+    coup = tab[i] + ant_i - 1;
+    while (tab[i] + ant_i - 1 > tab[j] + ant_j - 1)
+    {
+    --ant_i;
+    ++ant_j;
+    }
+    tab[i] = -1;
+    i = j;
+    ft_putnbr(ant_i);
+    ft_putchar('\n');
+    ft_putnbr(ant_j);
+    ft_putchar('\n');
+    ft_putchar('\n');
+    ant_i = ant_j;
+    }
+    ft_putnbr(ant_i);
+    }
+
+int	nbcoup_lower(int *tab, t_dm *data_map)
+{
+  int	i;
+  int	j;
+  int	ret;
+
+  i = 0;
+  j = 0;
+  ret = -1;
+  while (i < ft_list_size_t(data_map->chemin))
+    {
+      if (tab[i] != -1)
+	if (tab[j] > tab[i])
+	  {
+	    ret = 1;
+	    j = i;
+	  }
+      ++i;
+    }
+  if (ret == -1)
+    return (-1);
+  return (j);
+}
+
+    _______________________
+
+
+
+    void		moove_ant(t_dm *data_map, t_room *room, int *lol, int i)
+    {
+    int ant;
+
+    ant = 0;
+    if (lol[i] == 0)
+    return ;
+    lol[i]--;
+    room->fourmi++;
+    while (room->next)
+    {
+    if (room->next- > 0)
+    {
+    printf("ant(%d)", fourmi);
+    printf("%s", room->name);
+    ft_putstr("->");
+    if (room->next->next == NULL)
+    {
+    }
+    }
+    }
+    }
+
+    void		send_ant(t_dm *data_map, int *lol)
+    {
+    t_truc *chemin;
+    t_room *room;
+    int i;
+
+
+    while (is_empty(lol))
+    {
+    chemin = data_map->chemin;
+    i = 0;
+    while (chemin)
+    {
+    room = chemin->room;
+    moove_ant(room, lol, i);
+    }
+
+    }
+    }
+  */

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pars_data.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcoutare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/07 17:43:05 by jcoutare          #+#    #+#             */
+/*   Updated: 2018/01/07 17:45:20 by jcoutare         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "libft.h"
 #include "lemin.h"
@@ -6,7 +18,6 @@ int			check_line_lien(char *str, t_dm *data_map, int i)
 {
 	int		j;
 	int		size;
-
 
 	str = str + i + 1;
 	size = ft_strlen(str);
@@ -79,12 +90,11 @@ int			search_lien(t_dm *data_map, char **file, int i)
 			ft_puterr(file[i]);
 			ft_puterr("\n");
 			if (ret == -1)
-				return (ft_puterr("Invalid character during link creation _|\n"));
+				return (ft_puterr("Wrong char during link creation _|\n"));
 			else if (ret == -2)
-				return (ft_puterr("Invalid name during link creation _|\n"));
+				return (ft_puterr("Wrong char during link creation _|\n"));
 			else if (ret == -3)
-				return (ft_puterr
-						("Invalid format [name-name] during link creation _|\n"));
+				return (ft_puterr("Wrong char [name-name] in l_creation _|\n"));
 		}
 		if ((data_map->lien = realloc_tab(data_map->lien, file[i])) == NULL)
 			return (-1);

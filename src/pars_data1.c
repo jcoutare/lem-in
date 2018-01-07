@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pars_data1.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcoutare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/07 17:37:08 by jcoutare          #+#    #+#             */
+/*   Updated: 2018/01/07 17:41:28 by jcoutare         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 #include <stdlib.h>
 #include "libft.h"
@@ -8,8 +20,9 @@ int				search_nb_ant_start_end(char **file)
 
 	i = 0;
 	while (file[0][i])
-	{ if (!ft_isdigit(file[0][i]))
-		return (ft_puterr("Bad Number ant\n"));
+	{
+		if (!ft_isdigit(file[0][i]))
+			return (ft_puterr("Bad Number ant\n"));
 		++i;
 	}
 	if ((i = ft_atoi(file[0])) < 1)
@@ -65,14 +78,14 @@ int				check_format_lien(char *str, t_dm *data_map)
 	return (check != 1 ? -3 : -2);
 }
 
-int				search_name_room_next(t_dm *data_map, char **file, int *i, int ret)
+int				search_name_room_next(t_dm *data_map, char **file,
+									int *i, int ret)
 {
 	if (file[*i][0] == 'L')
 	{
 		ft_puterr(file[*i]);
 		ft_puterr("\n");
-		return (ft_puterr
-				("invalid character in room name : \'L\' _|\n"));
+		return (ft_puterr("wrong char in room name : \'L\' _|\n"));
 	}
 	else if (ft_strcmp(file[*i - 1], "##start") == 0)
 		data_map->start = file[*i];
@@ -80,8 +93,8 @@ int				search_name_room_next(t_dm *data_map, char **file, int *i, int ret)
 		data_map->end = file[*i];
 	else if ((ret = check_name(file[*i], data_map->name_room)) == 0)
 	{
-		if ((data_map->name_room = 
-					realloc_tab(data_map->name_room, file[*i])) == NULL)
+		if ((data_map->name_room =
+			realloc_tab(data_map->name_room, file[*i])) == NULL)
 			return (-1);
 	}
 	if (ret == -1)
@@ -93,9 +106,9 @@ int				search_name_room_next(t_dm *data_map, char **file, int *i, int ret)
 	return (0);
 }
 
-int			search_name_room(t_dm *data_map, char **file, int *i)
+int				search_name_room(t_dm *data_map, char **file, int *i)
 {
-	int		ret;
+	int			ret;
 
 	ret = -2;
 	while (file[*i] && (check_format_lien(file[*i], data_map)

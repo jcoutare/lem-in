@@ -6,7 +6,7 @@
 /*   By: jcoutare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 15:03:25 by jcoutare          #+#    #+#             */
-/*   Updated: 2017/12/28 18:33:36 by jcoutare         ###   ########.fr       */
+/*   Updated: 2018/01/07 17:09:16 by jcoutare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void			check_branch(t_tree *data, t_dm *data_map, char *prev, int *i)
 
 	j = -1;
 	while (j != *i)
-	{ j = *i;
+	{
+		j = *i;
 		if (data->branch[*i])
 			if (ft_strcmp(data->branch[*i]->name, data_map->start) == 0)
 				++*i;
@@ -102,8 +103,10 @@ int				get_path(t_tree *data, t_dm *data_map, char *prev, int i)
 				return (-1);
 	}
 	else
+	{
 		if (la_liste(data_map, data) == -1)
 			return (-1);
+	}
 	return (0);
 }
 
@@ -117,7 +120,7 @@ int				algo_lemdeux(t_tree **data, t_dm *data_map)
 	if (find_start(data, data_map) == -1)
 		return (ft_puterr("no start\n"));
 	if (get_path(*data, data_map, NULL, 0) == -1)
-	  return (-1);
+		return (-1);
 	if (ant_ant(data_map) == -1)
 		return (-1);
 	return (1);

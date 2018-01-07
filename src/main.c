@@ -6,7 +6,7 @@
 /*   By: yguzman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 15:34:03 by yguzman           #+#    #+#             */
-/*   Updated: 2017/10/17 15:34:16 by yguzman          ###   ########.fr       */
+/*   Updated: 2018/01/07 17:45:43 by jcoutare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "lemin.h"
 
 void		init_data_map(t_dm *dm)
-{	
+{
 	dm->nb_ant = -1;
 	dm->name_room = NULL;
 	dm->start = NULL;
@@ -43,8 +43,6 @@ void		free_all(t_tree *data, t_dm *data_map)
 //	free_tab(data_map->lien);
 //	free(data_map->start);
 //	free(data_map->end);
-
-
 	tmp = data;
 	while (tmp)
 	{
