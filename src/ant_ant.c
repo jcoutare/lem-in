@@ -114,7 +114,7 @@ int	lance(t_room *room, t_dm *data_map)
   
   if (room->next)
     lance(room->next, data_map);
-  //  printf("Room(%.1s) = F(%d) \n", room->name, room->fourmi);
+  // printf("Room(%.1s) = F(%d) \n", room->name, room->fourmi);
   if (room->fourmi != 0 && room->next != NULL)
     {
       printf("F(%d) : (%s)->(%s)\n", room->fourmi, room->name, room->next->name);
@@ -125,29 +125,6 @@ int	lance(t_room *room, t_dm *data_map)
   return (0);
 }
 
-void	fini(t_dm *data_map, int *xd)
-{
-  t_truc *chemin;
-  t_room *room;
-
-  chemin = data_map->chemin;
-  while (chemin)
-    {
-      room = chemin->room;
-      while (room->next)
-	{
-	  if (room->fourmi != 0)
-	    {
-	      printf("F(%d) : (%s)->(%s)\n", room->fourmi, room->name, room->next->name);
-	      room->next->fourmi = room->fourmi;
-	      room->fourmi = 0;
-	    }
-	  room = room->next;
-	}
-      chemin = chemin->next;
-    }
-}
-
 void	launch_the_nukes(t_dm *data_map, int *xd, int *lol)
 {
   t_truc *chemin;
@@ -156,8 +133,9 @@ void	launch_the_nukes(t_dm *data_map, int *xd, int *lol)
   int ant;
 
   ant = 1;
-  while (is_empty(xd, data_map))
+  while (1)
     {
+      sleep(1);
       chemin = data_map->chemin;
       i = 0;
       printf("---------\n");
@@ -166,30 +144,17 @@ void	launch_the_nukes(t_dm *data_map, int *xd, int *lol)
 	  if (xd[i] > 0)
 	    {
 	      room = chemin->room; 
-	      room->fourmi = ant;
+	      if (ant <= data_map->nb_ant)
+		{
+		  room->fourmi = ant;
+		  ant++;
+		}
 	      lance(room, data_map);
-	      ant++;
-	      xd[i]--;
 	    }
 	  i++;
 	  chemin = chemin->next;
 	}
     }
-
-  i = 0;
-  chemin = data_map->chemin;
-  while (chemin)
-    {
-      room = chemin->room;
-      if (lol[i] != -1)
-	{
-	  lance(room, data_map) == 0;
-	}
-      i++;
-      chemin = chemin->next;
-    }
-
-  //  fini(data_map, xd);
 }
 
 int	*create_xd(t_dm *data_map)
@@ -208,61 +173,61 @@ int	*create_xd(t_dm *data_map)
   return (xd);
 }
 
-int	*t_nul(t_dm *data_map, int *lol)
-{
-  int *xd;
-  int i;
-  int n;
-  int ant;
+  int	*t_nul(t_dm *data_map, int *lol)
+  {
+    int *xd;
+    int i;
+    int n;
+    int ant;
 
-  ant = data_map->nb_ant;
-  n = 0;
-  xd = create_xd(data_map);
-  while (ant)
-    {
-      i = 0;
-      while (i < ft_list_size_t(data_map->chemin))
-	{
-	  if (lol[i] != -1)
-	    {
-	      xd[i]++;;
-	      if (--ant == 0)
-		return (xd);
-	    }
-	  i++;
-	}
-    }
-  return (xd);
-}
+    ant = data_map->nb_ant;
+    n = 0;
+    xd = create_xd(data_map);
+    while (ant)
+      {
+	i = 0;
+	while (i < ft_list_size_t(data_map->chemin))
+	  {
+	    if (lol[i] != -1)
+	      {
+		xd[i]++;;
+		if (--ant == 0)
+		  return (xd);
+	      }
+	    i++;
+	  }
+      }
+    return (xd);
+  }
 
-int		ant_ant(t_dm *data_map)
-{
-  int *lol;
-  int *xd;
-  int i;
+  int		ant_ant(t_dm *data_map)
+  {
+    int *lol;
+    int *xd;
+    int i;
 
-  i = 0;
-  printf(">><<\n");
-  check_list(data_map);
-  if (!(lol = fill_jecodeaveclecul(data_map)))
-    return (-1);
-  while (i < ft_list_size_t(data_map->chemin))
-    {
-      printf("lol[%d][%d]\n", i, lol[i]);
-      i++;
-    }
-  if (!(xd = t_nul(data_map, lol)))
-    return (-1);
-  i = 0;
-  while (i < ft_list_size_t(data_map->chemin))
-    {
-      printf("xd[%d][%d]\n", i, xd[i]);
-      i++;
-    }
-  launch_the_nukes(data_map, xd, lol);
-  //  sort(data_map, lol);
-  return (1);
-}
+    i = 0;
+    printf(">><<\n");
+    check_list(data_map);
+    if (!(lol = fill_jecodeaveclecul(data_map)))
+      return (-1);
+    while (i < ft_list_size_t(data_map->chemin))
+      {
+	printf("lol[%d][%d]\n", i, lol[i]);
+	i++;
+      }
+    if (!(xd = t_nul(data_map, lol)))
+      return (-1);
+    i = 0;
+    while (i < ft_list_size_t(data_map->chemin))
+      {
+	printf("xd[%d][%d]\n", i, xd[i]);
+	i++;
+      }
+    launch_the_nukes(data_map, xd, lol);
+    //  sort(data_map, lol);
+    return (1);
+  }
 
   /*
 
