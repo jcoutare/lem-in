@@ -47,29 +47,6 @@ void		check_list(t_dm *data_map)
     }
 }
 
-int	nbcoup_lower(int *tab, t_dm *data_map, int check)
-{
-  int	i;
-  int	j;
-  int	ret;
-
-  i = 0;
-  j = 0;
-  ret = -1;
-  while (i < ft_list_size_t(data_map->chemin))
-    {
-      if (tab[i] != -1)
-	if (tab[j] > tab[i])
-	  {
-	    ret = 1;
-	    j = i;
-	  }
-      ++i;
-    }
-  if (ret == -1)
-    return (-1);
-  return (j);
-}
 
 int		*fill_jecodeaveclecul(t_dm *data_map)
 {
@@ -95,26 +72,11 @@ int		*fill_jecodeaveclecul(t_dm *data_map)
   return (jecodeaveclecul);
 }
 
-int	is_empty(int *lol, t_dm *data_map)
-{
-  int i;
-  
-  i = 0;
-  while (i < ft_list_size_t(data_map->chemin))
-    {
-      if (lol[i] > 0)
-	return (1);
-      i++;
-    }
-  return (0);
-}
-
 int	lance(t_room *room, t_dm *data_map)
 {
   
   if (room->next)
     lance(room->next, data_map);
-  // printf("Room(%.1s) = F(%d) \n", room->name, room->fourmi);
   if (room->fourmi != 0 && room->next != NULL)
     {
       printf("F(%d) : (%s)->(%s)\n", room->fourmi, room->name, room->next->name);
@@ -125,20 +87,42 @@ int	lance(t_room *room, t_dm *data_map)
   return (0);
 }
 
-void	launch_the_nukes(t_dm *data_map, int *xd, int *lol)
+
+int	nb_coup_total(t_dm *data_map, int *lol, int *xd)
+{
+  int value;
+  int i;
+  int j;
+  
+  i = 0;
+  j = 0;
+  value = xd[i];
+  while (i < ft_list_size_t(data_map->chemin))
+    {
+      if (xd[i] > value)
+	{
+	  value = xd[i];
+	  j = i;
+	}
+      i++;
+    }
+  return (value + lol[j] - 1);
+}
+
+void	launch_the_nukes(t_dm *data_map, int *xd, int *lol, int i)
 {
   t_truc *chemin;
   t_room *room;
-  int i;
+  int round;
   int ant;
 
   ant = 1;
-  while (1)
+  round = nb_coup_total(data_map, lol, xd);
+  while (round--)
     {
-      sleep(1);
       chemin = data_map->chemin;
       i = 0;
-      printf("---------\n");
+      printf("-----[%d]----\n", round + 1);
       while (chemin)
 	{
 	  if (xd[i] > 0)
@@ -224,7 +208,7 @@ int	*create_xd(t_dm *data_map)
 	printf("xd[%d][%d]\n", i, xd[i]);
 	i++;
       }
-    launch_the_nukes(data_map, xd, lol);
+    launch_the_nukes(data_map, xd, lol, 0);
     //  sort(data_map, lol);
     return (1);
   }
@@ -261,6 +245,30 @@ int	*create_xd(t_dm *data_map)
     }
     ft_putnbr(ant_i);
     } 
+
+int	nbcoup_lower(int *tab, t_dm *data_map)
+{
+  int	i;
+  int	j;
+  int	ret;
+
+  i = 0;
+  j = 0;
+  ret = -1;
+  while (i < ft_list_size_t(data_map->chemin))
+    {
+      if (tab[i] != -1)
+	if (tab[j] > tab[i])
+	  {
+	    ret = 1;
+	    j = i;
+	  }
+      ++i;
+    }
+  if (ret == -1)
+    return (-1);
+  return (j);
+}
 
     _______________________
     
