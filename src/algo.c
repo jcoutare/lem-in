@@ -114,12 +114,10 @@ int				algo_lemdeux(t_tree **data, t_dm *data_map)
 	i = 0;
 	data_map->room = NULL;
 	data_map->chemin = NULL;
-	printf("coucou\n");
 	if (find_start(data, data_map) == -1)
 		return (ft_puterr("no start\n"));
 	if (get_path(*data, data_map, NULL, 0) == -1)
 	  return (-1);
-	printf("%s\n", data_map->chemin->room->name);
 	if (ant_ant(data_map) == -1)
 		return (-1);
 	return (1);

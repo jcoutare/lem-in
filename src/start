@@ -1,0 +1,65 @@
+algo.c:			if (ft_strcmp(data->branch[*i]->name, data_map->start) == 0)
+algo.c:	if (l_push_back(&data_map->room, data->name) == -1)
+algo.c:	if ((new->room = lst_copy(&data_map->room)) == NULL)
+algo.c:	if (data_map->chemin == NULL)
+algo.c:		data_map->chemin = new;
+algo.c:	tmp = data_map->chemin;
+algo.c:	lst_remove_last(&data_map->room);
+algo.c:			tmp = data_map->room;
+algo.c:				if (l_push_back(&(data_map->room), data->name) == -1)
+algo.c:			lst_remove_last(&data_map->room);
+algo.c:	if (ft_strcmp(data->name, data_map->end) != 0)
+algo.c:			if (l_push_back(&(data_map->room), data->name) == -1)
+algo.c:			lst_remove_last(&data_map->room);
+algo.c:	if (ft_strcmp(data->name, data_map->end) != 0)
+algo.c:	data_map->room = NULL;
+algo.c:	data_map->chemin = NULL;
+algo.c:	printf("%s\n", data_map->chemin->room->name);
+ant_ant.c:  main_c = data_map->chemin;
+ant_ant.c:		      && (ft_strcmp(tmp_r->name, data_map->end) != 0 &&
+ant_ant.c:			  ft_strcmp(tmp_r->name, data_map->start) != 0))
+ant_ant.c:  tmp = data_map->chemin;
+ant_ant.c:  while (i < ft_list_size_t(data_map->chemin))
+ant_ant.c:      chemin = data_map->chemin;
+ant_ant.c:	      if (ant <= data_map->nb_ant)
+ant_ant.c:  if (!(xd = malloc(sizeof(int) * ft_list_size_t(data_map->chemin))))
+ant_ant.c:  while (i < ft_list_size_t(data_map->chemin))
+ant_ant.c:    ant = data_map->nb_ant;
+ant_ant.c:	while (i < ft_list_size_t(data_map->chemin))
+ant_ant.c:    while (i < ft_list_size_t(data_map->chemin))
+ant_ant.c:    while (i < ft_list_size_t(data_map->chemin))
+ant_ant.c:    ant_i = data_map->nb_ant;
+ant_ant.c:  while (i < ft_list_size_t(data_map->chemin))
+ant_ant.c:    chemin = data_map->chemin;
+fill_data.c:	if ((push = create_maillon(data_map->start, 1)) == NULL)
+fill_data.c:	if ((push = create_maillon(data_map->end, 2)) == NULL)
+fill_data.c:	while (data_map->name_room && data_map->name_room[i])
+fill_data.c:		if ((push = create_maillon(data_map->name_room[i], 0)) == NULL)
+fill_data.c:	free(data_map->name_room);
+fill_data.c:	while (data_map->lien[i] != NULL)
+fill_data.c:		if (create_lien(data, data_map->lien[i]) == -1)
+fill_data.c:		free(data_map->lien[i]);
+fill_data.c:	free(data_map->lien);
+main.c://	free_tab(data_map->name_room);
+main.c://	free_tab(data_map->lien);
+main.c://	free(data_map->start);
+main.c://	free(data_map->end);
+pars_data.c:	if ((!ft_strncmp(str, data_map->start, size)) ||
+pars_data.c:			(!ft_strncmp(str, data_map->end, size)))
+pars_data.c:	while (data_map->name_room && data_map->name_room[j])
+pars_data.c:		if ((!ft_strncmp(str, data_map->name_room[j], size)))
+pars_data.c:		if ((data_map->lien = realloc_tab(data_map->lien, file[i])) == NULL)
+pars_data.c:	if ((data_map->nb_ant = search_nb_ant_start_end(file)) == -1)
+pars_data.c:	if (data_map->start == NULL)
+pars_data.c:	else if (data_map->end == NULL)
+pars_data1.c:	while (data_map->name_room && data_map->name_room[j])
+pars_data1.c:		if ((!ft_strncmp(str, data_map->name_room[j], i)))
+pars_data1.c:	if (data_map->start == NULL || data_map->end == NULL)
+pars_data1.c:			if ((!ft_strncmp(str, data_map->start, i)) ||
+pars_data1.c:					(!ft_strncmp(str, data_map->end, i)))
+pars_data1.c:		data_map->start = file[*i];
+pars_data1.c:		data_map->end = file[*i];
+pars_data1.c:	else if ((ret = check_name(file[*i], data_map->name_room)) == 0)
+pars_data1.c:		if ((data_map->name_room = 
+pars_data1.c:					realloc_tab(data_map->name_room, file[*i])) == NULL)
+tools.c:		if (ft_strcmp(data_map->start, (*data)->name) == 0)

@@ -11,7 +11,7 @@
 
 CC			=		clang
 
-NAME		=		./lemin
+NAME		=		./lem-in
 
 DIR_SRC		=		./src/
 
